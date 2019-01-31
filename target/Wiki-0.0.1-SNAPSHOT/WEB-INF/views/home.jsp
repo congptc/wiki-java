@@ -4,7 +4,6 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css"/>
-  
   <title>shadowplay_2</title>
 </head>
 <body>

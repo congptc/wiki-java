@@ -40,7 +40,6 @@ public class HomeServlet extends HttpServlet {
 		
 		ServletContext context = getServletContext();
 		String rootPath = context.getRealPath("WEB-INF/datas/");
-		String[] extensions = new String[] {".data"};
 		
 		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/home.jsp");
 		String data = req.getParameter("data");
@@ -50,7 +49,6 @@ public class HomeServlet extends HttpServlet {
 		}else {
 			Collection<File> files = FileUtils.listFilesAndDirs(new File(rootPath), TrueFileFilter.INSTANCE, DirectoryFileFilter.DIRECTORY);
 			BuildHtml bh = new BuildHtml();
-			String parentDir = "";
 			for (File file : files) {
 				if(file.isDirectory()) {
 					content += bh.category(file.getName());
