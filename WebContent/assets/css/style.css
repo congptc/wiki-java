@@ -187,14 +187,14 @@ ul#menu li.selected a, ul#menu li.selected a:hover
 ul#menu li a:hover
 { color: #00C5EE;}
 
-#site_content
+#site_content_article
 { width: 100%;
   margin-top: 10px;
   overflow: hidden;} 
 
-.sidebar
+.sidebar_article
 { float: left;
-  width: 178px;
+  width: 15%;
   padding: 20px 25px 15px 15px;}
 
 .sidebar ul
@@ -217,7 +217,7 @@ ul#menu li a:hover
 .sidebar li a.selected, .sidebar li a:hover, .sidebar li a.selected:hover
 { color: #A4AA04;} 
 
-#content
+#content_article
 { text-align: left;
   width: 81%;
   float: left;
@@ -315,9 +315,40 @@ table tr td
 { background: #FFF;
   color: #47433F;
   border-top: 1px solid #FFF;}
+  
+ p.info-article{
+    line-height:0px;
+ 	font-style: italic;
+ }
+ 
+#site_content
+{ width: 875px;
+  margin-top: 10px;
+  overflow: hidden;} 
 
-.col
-{
-  width: 25%;
-  float:left;
-}
+.sidebar
+{ float: left;
+  width: 178px;
+  padding: 20px 25px 15px 15px;}
+  
+ 
+ #content
+{ text-align: left;
+  width: 624px;
+  float: left;
+  padding: 20px 10px 15px 0px;}
+  
+  .btn-action{
+  	padding-right: 10px;
+  }
+  
+  .subject{
+  	margin: 10px 0px 5px 0px;
+  	border-bottom: 0px;
+  }
+  
+  .bottom-line{
+  	border-bottom: 0px;
+  	border-top: 1px solid #CCC6B4;
+  }
+  
