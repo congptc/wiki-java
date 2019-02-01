@@ -34,17 +34,46 @@
 		</div>
 		<div id="content_header"></div>
 		<div id="site_content">
+			<div class="sidebar">
+				
+				<h3>Topic</h3>
+				<ul>
+					<li><a href="#">Core</a></li>
+					<li><a href="#">CRS</a></li>
+					<li><a href="#">VMS</a></li>
+					<li><a href="#">link 4</a></li>
+				</ul>
+				<h3>Search</h3>
+				<form method="post" action="#" id="search_form">
+					<p>
+						<input class="search" type="text" name="search_field"
+							value="Enter keywords....."> <input name="search"
+							type="image" style="border: 0; margin: 0 0 -9px 5px;"
+							src="assets/css/search.png" alt="Search" title="Search">
+					</p>
+				</form>
+			</div>
 			<div id="content">
-				<div class="col">
-					<h3><a href="#">CORE</a></h3>
-					<ul>
-						<li><a href="#">link 1 ink 1ink 1ink 1ink 1ink 1ink 1ink
-								1ink 1</a></li>
-						<li><a href="#">link 2 ink 1ink 1</a></li>
-						<li><a href="#">link 3 ink 1ink 1ink 1ink 1</a></li>
-						<li><a href="#">link 4 ink 1ink 1ink 1</a></li>
-					</ul>
-				</div>
+				<!-- insert the page content here -->
+				<h1>Latest Article</h1>
+				<p>
+					<a href="http://www.html5webtemplates.co.uk">Article Subject 1 This template is written entirely in This template is written entirely in 
+					This template is written entirely in This template is written entirely in </a> 
+					<p class="info-article">Topic: Core</p>
+					<p class="info-article">Author-Created date</p>
+				</p>
+				<p>
+					<a href="http://www.html5webtemplates.co.uk">Article Subject 1 This template is written entirely in This template is written entirely in 
+					This template is written entirely in This template is written entirely in </a> 
+					<p class="info-article">Topic: Core</p>
+					<p class="info-article">Author-Created date</p>
+				</p>
+				<p>
+					<a href="http://www.html5webtemplates.co.uk">Article Subject 1 This template is written entirely in This template is written entirely in 
+					This template is written entirely in This template is written entirely in </a> 
+					<p class="info-article">Topic: Core</p>
+					<p class="info-article">Author-Created date</p>
+				</p>
 			</div>
 		</div>
 		<div id="content_footer"></div>
