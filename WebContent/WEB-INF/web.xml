@@ -1,41 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xmlns="http://java.sun.com/xml/ns/javaee" 
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
-id="WebApp_ID" version="2.5">
-  <display-name>Wiki</display-name>
-  <welcome-file-list>
-    <welcome-file>home</welcome-file>
-  </welcome-file-list>
-  
-  <servlet>
-  	<servlet-name>homeServlet</servlet-name>
-  	<servlet-class>com.tpb.wiki.servlet.HomeServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>homeServlet</servlet-name>
-  	<url-pattern>/home</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>articleServlet</servlet-name>
-  	<servlet-class>com.tpb.wiki.servlet.ArticleServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>articleServlet</servlet-name>
-  	<url-pattern>/article</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>createTopicServlet</servlet-name>
-  	<servlet-class>com.tpb.wiki.servlet.CreateTopicServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>createTopicServlet</servlet-name>
-  	<url-pattern>/create-topic</url-pattern>
-  </servlet-mapping>
-  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>Wiki</display-name>
+	<welcome-file-list>
+		<welcome-file>home</welcome-file>
+	</welcome-file-list>
+	
+	<filter>
+		<filter-name>LoadDataCommonFilter</filter-name>
+		<filter-class>com.tpb.wiki.filters.LoadDataCommonFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>LoadDataCommonFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<servlet>
+		<servlet-name>homeServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.HomeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>homeServlet</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>articleServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.ArticleServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>articleServlet</servlet-name>
+		<url-pattern>/article</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>createTopicServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.CreateTopicServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>createTopicServlet</servlet-name>
+		<url-pattern>/create-topic</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>createArticleServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.CreateArticleServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>createArticleServlet</servlet-name>
+		<url-pattern>/create-article</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UploadImgServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.UploadImgServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UploadImgServlet</servlet-name>
+		<url-pattern>/upload-image</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>DeleteImgServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.DeleteImgServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DeleteImgServlet</servlet-name>
+		<url-pattern>/delete-image</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UpdateTopicServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.UpdateTopicServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UpdateTopicServlet</servlet-name>
+		<url-pattern>/update-topic</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UpdateArticleServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.UpdateArticleServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UpdateArticleServlet</servlet-name>
+		<url-pattern>/update-article</url-pattern>
+	</servlet-mapping>
+
 </web-app>
