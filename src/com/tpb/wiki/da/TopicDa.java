@@ -84,18 +84,24 @@ public class TopicDa {
 	}
 
 	public Messages updateTopic(Topic topic) {
-		String sql = "Update topics set name =?,description = ?,update_by=?, update_date Where id=? ";
+		String sql = "Update topics "
+					+ "set name = ? ,"
+					+ "description = ?,"
+					+ "update_by=?,"
+					+ "update_date = ?"
+					+ "Where id=? ";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {
 			conn = _ds.getConnection();
 			pstm = conn.prepareStatement(sql);
 
-			pstm.setInt(1, topic.getId());
 			pstm.setString(1, topic.getName());
 			pstm.setString(2, topic.getDescription());
 			pstm.setString(3, topic.getUpdateBy());
 			pstm.setTimestamp(4, new Timestamp(topic.getUpdateDate().getTime()));
+			pstm.setInt(5, topic.getId());
+			
 			if(pstm.executeUpdate() > 0) {
 				return new Messages(Constants.MessageType.SUCCESS, "Update success");
 			}
@@ -118,7 +124,7 @@ public class TopicDa {
 	}
 
 	public Topic findTopicById(int topicId) {
-		String sql = "Select * From Topics where id= ?";
+		String sql = "Select * From topics where id= ?";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {

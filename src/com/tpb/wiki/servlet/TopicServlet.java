@@ -8,30 +8,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpb.wiki.bo.ArticleBo;
+import com.tpb.wiki.bo.TopicBo;
 
-
-public class ArticleServlet extends HttpServlet {
+public class TopicServlet extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		ArticleBo articleBo = new ArticleBo();
-		articleBo.findArticleById(req);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/article.jsp");
+		TopicBo topicBo = new TopicBo();
+		topicBo.getTopicById(req);
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/topic.jsp");
 		dispatcher.forward(req, resp);
-
 	}
-
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req,resp);
 	}
+
 }

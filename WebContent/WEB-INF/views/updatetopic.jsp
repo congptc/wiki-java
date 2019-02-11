@@ -27,7 +27,7 @@
 
 			<div id="content">
 				<!-- insert the page content here -->
-				<h1>Create Topic</h1>
+				<h1>Update Topic</h1>
 				<div id="messageFrame">
 					<c:choose>
 						<c:when test="${message.messageType == 'SUCCESS'}">
@@ -38,9 +38,10 @@
 						</c:when>
 					</c:choose>
 				</div>
-				<form action="${pageContext.request.contextPath}/create-topic"
+				<form action="${pageContext.request.contextPath}/update-topic"
 					method="post" id="formInput">
 					<div class="form_settings">
+						<input type="hidden" id="id" name="id" value="${topic.id}" />
 						<p>
 							<span>Topic name *</span><input type="text" id="name" name="name"
 								value="${topic.name }">
@@ -51,7 +52,7 @@
 						</p>
 					</div>
 					<h1 class="bottom-line">
-						<a class="button" id="save" href="#" >Save</a>
+						<a class="button" id="update" href="#" >Update</a>
 						<a class="button" href="${pageContext.request.contextPath}/" >Back to home</a>
 					</h1>
 				</form>
@@ -61,7 +62,7 @@
 		
 		<!-- footer part -->
 		<jsp:include page="_footer.jsp"></jsp:include>
-		<script type="text/javascript" src="assets/js/createtopic.js"></script> 
+		<script type="text/javascript" src="assets/js/updatetopic.js"></script> 
 		
 	</div>
 </body>

@@ -16,13 +16,3 @@ $(function() {
 	
 });
 
-function validateInput(formSubmit) {
-	if ($("#subject").val() === "" || $("#content").val() === "") {
-		$("#messageFrame")
-				.html(
-						"<i style='color: red'>[Subject] and [Content] not be blank</i>");
-	} else {
-		$("#" + formSubmit).submit();
-	}
-
-}

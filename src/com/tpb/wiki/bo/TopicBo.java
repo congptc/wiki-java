@@ -4,16 +4,15 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.tpb.wiki.beans.Article;
 import com.tpb.wiki.beans.Topic;
 import com.tpb.wiki.common.Constants;
 import com.tpb.wiki.common.Messages;
 import com.tpb.wiki.conn.DBCPDataSourceFactory;
-import com.tpb.wiki.da.ArticleDa;
 import com.tpb.wiki.da.TopicDa;
 
 public class TopicBo {
@@ -45,11 +44,19 @@ public class TopicBo {
 			message = _topicDa.createTopic(topic);
 		}
 
+		if(message.getMessageType().equals(Constants.MessageType.ERROR)) {
+			req.setAttribute("topic", topic);
+		}else {
+			req.setAttribute("topic", null);
+		}
+		
 		req.setAttribute("message", message);
 	}
 
 	public void updateTopic(HttpServletRequest req) {
 
+		HttpSession session = req.getSession();
+		
 		String name = (String) req.getParameter("name");
 		String desc = (String) req.getParameter("description");
 		String updateBy = "System";
@@ -61,14 +68,32 @@ public class TopicBo {
 		} else {
 			message = _topicDa.updateTopic(topic);
 		}
+		
+		session.setAttribute("afterUpdateTopic", topic);
+		session.setAttribute("message", message);
 
 		req.setAttribute("message", message);
 	}
 
 	public void getTopicById(HttpServletRequest req) {
-		int id = Integer.parseInt(req.getParameter("id"));
-		Topic topic = _topicDa.findTopicById(id);
+		HttpSession session = req.getSession();
+		Messages message = null;
+		Topic topic = null;
+		
+		if(session.getAttribute("afterUpdateTopic") == null) {
+			int id = Integer.parseInt(req.getParameter("id"));
+			topic = _topicDa.findTopicById(id);
+			session.setAttribute("beforeUpdateTopic", topic);
+		}else {
+			topic = (Topic)session.getAttribute("afterUpdateTopic");
+			message = (Messages)session.getAttribute("message");
+			session.setAttribute("afterUpdateTopic", null);
+			session.setAttribute("message", null);
+		}
+		
+		req.setAttribute("message", message);
 		req.setAttribute("topic", topic);
+		
 	}
 
 	public boolean isBlank(Topic topic) {

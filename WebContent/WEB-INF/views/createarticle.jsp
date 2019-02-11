@@ -29,25 +29,11 @@
 <body>
 	<div id="main">
 		<div id="header">
-			<div id="logo">
-				<div id="logo_text">
-					<!-- class="logo_colour", allows you to change the colour of the text -->
-					<h1>
-						<a href="index.html">shadow<span class="logo_colour">play_2</span></a>
-					</h1>
-					<h2>Simple. Contemporary. Website Template.</h2>
-				</div>
-			</div>
+			<!-- logo part -->
+			<jsp:include page="_logo.jsp"></jsp:include>
 			
-			<div id="menubar">
-				<ul id="menu">
-					<!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-					<li class="btnMenu"><a href="${pageContext.request.contextPath}/home">Home</a></li>
-					<li class="btnMenu"><a href="${pageContext.request.contextPath}/create-topic">Create Topic</a></li>
-					<li class="btnMenu selected"><a href="${pageContext.request.contextPath}/create-article">Create Article</a></li>
-					<li class="btnMenu"><a href="#">Contact Us</a></li>
-				</ul>
-			</div>
+			<!-- menu bar part -->
+			<jsp:include page="_menubar.jsp"></jsp:include>
 
 		</div>
 		<div id="content_header"></div>
@@ -98,7 +84,7 @@
 						<textarea name="content" id="content">${article.content}</textarea>
 					</div>
 					<h1 class="bottom-line">
-						<a class="button" id="save" href="#" >Update</a>
+						<a class="button" id="save" href="#" >Save</a>
 						<a class="button" href="${pageContext.request.contextPath}/" >Back to home</a>
 					</h1>
 				</form>

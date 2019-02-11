@@ -29,14 +29,13 @@
 
 			<div id="content">
 				<!-- insert the page content here -->
-				<h1>Latest Article</h1>
-				<c:forEach var="article" items="${articles}">
+				<h1>List topic</h1>
+				<c:forEach var="topic" items="${topics}">
 					<p>
-						<a href="${pageContext.request.contextPath}/article?id=${article.id}">
-							${article.subject}
+						<a href="${pageContext.request.contextPath}/topic?id=${topic.id}">
+							${topic.name}
 						</a>
-						<p class="info-article">Topic:</p>
-						<p class="info-article">${article.createBy}-${article.createDate}</p>
+						<p class="info-article">${topic.createBy}-${topic.createDate}</p>
 					</p>
 				</c:forEach>
 

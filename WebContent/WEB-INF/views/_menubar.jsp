@@ -5,8 +5,8 @@
 <div id="menubar">
 	<ul id="menu">
 		<!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-		<li class="btnMenu selected"><a href="${pageContext.request.contextPath}/home">Home</a></li>
-		<li class="btnMenu"><a href="${pageContext.request.contextPath}/create-topic">Create Topic</a></li>
+		<li class="btnMenu selected"><a href="${pageContext.request.contextPath}/">Home</a></li>
+		<li class="btnMenu"><a href="${pageContext.request.contextPath}/topics">Topics</a></li>
 		<li class="btnMenu"><a href="${pageContext.request.contextPath}/create-article">Create Article</a></li>
 		<li class="btnMenu"><a href="#">Contact Us</a></li>
 	</ul>

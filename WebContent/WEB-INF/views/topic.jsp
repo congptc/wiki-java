@@ -28,18 +28,19 @@
 			<div id="content_article">
 				<!-- insert the page content here -->
 				<h1> 
-						<a class="button" href="${pageContext.request.contextPath}/create-article" >New</a> 
-						<a class="button" href="${pageContext.request.contextPath}/update-article?id=${article.id}" >Edit</a> 
+						<a class="button" href="${pageContext.request.contextPath}/create-topic" >New</a> 
+						<a class="button" href="${pageContext.request.contextPath}/update-topic?id=${topic.id}" >Edit</a> 
 						<a class="button" href="${pageContext.request.contextPath}" >Back to home</a> 
 				</h1>
-				<h1 class="subject" >${article.subject }</h1>
-				<p class="info-article">Topic:  / ${article.createBy }-${article.createDate }</p>
 				<p>
-			 		${article.content}					
+			 		 Topic name : ${topic.name}					
+				</p>
+				<p>
+			 		Description : ${topic.description}					
 				</p>
 				<h1 class="bottom-line"> 
-						<a class="button" href="${pageContext.request.contextPath}/create-article" >New</a> 
-						<a class="button" href="${pageContext.request.contextPath}/update-article?id=${article.id}" >Edit</a> 
+						<a class="button" href="${pageContext.request.contextPath}/create-topic" >New</a> 
+						<a class="button" href="${pageContext.request.contextPath}/update-topic?id=${topic.id}" >Edit</a> 
 						<a class="button" href="${pageContext.request.contextPath}" >Back to home</a>   
 				</h1>
 			</div>
