@@ -19,12 +19,20 @@ var btnContainer = document.getElementById("menubar");
 // Get all buttons with class="btn" inside the container
 var btns = btnContainer.getElementsByClassName("btnMenu");
 
+//Process find the which menu selected
+var link = window.location.href;
+var urlOfTagA,linkAction=  "";
+var urlOnLink = link.substr(link.lastIndexOf('/')+1,link.length);
+
 // Loop through the buttons and add the active class to the current/clicked button
 for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
+  urlOfTagA = btns[i].children.item(0).getAttribute("href");
+  linkAction = urlOfTagA.substr(urlOfTagA.lastIndexOf('/')+1,urlOfTagA.length);
+  
+  if(urlOnLink === linkAction){
     var current = document.getElementsByClassName("selected");
     current[0].className = current[0].className.replace(" selected", "");
-    this.className += " selected";
-  });
+    btns[i].className += " selected";
+  }
 }
 </script>
