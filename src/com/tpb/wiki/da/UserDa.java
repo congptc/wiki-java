@@ -20,7 +20,7 @@ public class UserDa {
 	}
 
 	public int createUser(User user) {
-		String sql = "Insert into users(user_name, password,status) values (?,?,?)";
+		String sql = "Insert into wk_users(id,user_name, password,status) values (wk_user_sequence.nextval,?,?,?)";
 		Connection conn = null;
 		try {
 			conn = _ds.getConnection();
@@ -47,7 +47,7 @@ public class UserDa {
 	}
 
 	public int deleteUser(String id) {
-		String sql = "Delete From users where id= ?";
+		String sql = "Delete From wk_users where id= ?";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {
@@ -70,7 +70,7 @@ public class UserDa {
 	}
 
 	public int updateUser(User user) {
-		String sql = "Update users set name =?,password = ?,status=? Where id=? ";
+		String sql = "Update wk_users set name =?,password = ?,status=? Where id=? ";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {
@@ -99,7 +99,7 @@ public class UserDa {
 	}
 
 	public User findUserById(int userId) {
-		String sql = "Select * From users where id= ?";
+		String sql = "Select * From wk_users where id= ?";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {
@@ -135,7 +135,7 @@ public class UserDa {
 	}
 	
 	public List<User> queryUser() {
-		String sql = "Select * From users";
+		String sql = "Select * From wk_users";
 		List<User> users = new ArrayList<User>();
 		Connection conn = null;
 		PreparedStatement pstm;
