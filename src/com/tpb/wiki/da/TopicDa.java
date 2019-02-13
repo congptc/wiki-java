@@ -24,7 +24,7 @@ public class TopicDa {
 	}
 
 	public Messages createTopic(Topic topic) {
-		String sql = "Insert into topics(name, description,create_by,create_date) values (?,?,?,?)";
+		String sql = "Insert into wk_topics(id, name, description,create_by,create_date) values (wk_topic_sequence.nextval,?,?,?,?)";
 		Connection conn = null;
 		try {
 			conn = _ds.getConnection();
@@ -57,7 +57,7 @@ public class TopicDa {
 	}
 
 	public Messages deleteTopic(String id) {
-		String sql = "Delete From topics where id= ?";
+		String sql = "Delete From wk_topics where id= ?";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {
@@ -84,7 +84,7 @@ public class TopicDa {
 	}
 
 	public Messages updateTopic(Topic topic) {
-		String sql = "Update topics "
+		String sql = "Update wk_topics "
 					+ "set name = ? ,"
 					+ "description = ?,"
 					+ "update_by=?,"
@@ -124,7 +124,7 @@ public class TopicDa {
 	}
 
 	public Topic findTopicById(int topicId) {
-		String sql = "Select * From topics where id= ?";
+		String sql = "Select * From wk_topics where id= ?";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {
@@ -163,7 +163,7 @@ public class TopicDa {
 	}
 	
 	public List<Topic> queryTopic() {
-		String sql = "Select * From topics ORDER BY name DESC";
+		String sql = "Select * From wk_topics ORDER BY name DESC";
 		List<Topic> topics = new ArrayList<Topic>();
 		Connection conn = null;
 		PreparedStatement pstm;
