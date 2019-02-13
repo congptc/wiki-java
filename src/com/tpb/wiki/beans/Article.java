@@ -5,6 +5,7 @@ import java.util.Date;
 public class Article {
 	private int id;
 	private int idTopic;
+	private String topicName;
 	private String subject;
 	private String content;
 	private String createBy;
@@ -12,13 +13,25 @@ public class Article {
 	private String updateBy;
 	private Date updateDate;
 	
-	
-	
 	public Article(int id, int idTopic, String subject, String content, String createBy, Date createDate,
 			String updateBy, Date updateDate) {
 		super();
 		this.id = id;
 		this.idTopic = idTopic;
+		this.subject = subject;
+		this.content = content;
+		this.createBy = createBy;
+		this.createDate = createDate;
+		this.updateBy = updateBy;
+		this.updateDate = updateDate;
+	}
+	
+	public Article(int id, int idTopic,String topicName, String subject, String content, String createBy, Date createDate,
+			String updateBy, Date updateDate) {
+		super();
+		this.id = id;
+		this.idTopic = idTopic;
+		this.topicName = topicName;
 		this.subject = subject;
 		this.content = content;
 		this.createBy = createBy;
@@ -37,6 +50,12 @@ public class Article {
 	}
 	public void setIdTopic(int idTopic) {
 		this.idTopic = idTopic;
+	}
+	public String getTopicName() {
+		return topicName;
+	}
+	public void setTopicName(String topicName) {
+		this.topicName = topicName;
 	}
 	public String getSubject() {
 		return subject;

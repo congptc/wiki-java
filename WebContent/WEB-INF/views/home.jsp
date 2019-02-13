@@ -35,7 +35,7 @@
 						<a href="${pageContext.request.contextPath}/article?id=${article.id}">
 							${article.subject}
 						</a>
-						<p class="info-article">Topic:</p>
+						<p class="info-article">Topic:${article.topicName}</p>
 						<p class="info-article">${article.createBy}-${article.createDate}</p>
 					</p>
 				</c:forEach>

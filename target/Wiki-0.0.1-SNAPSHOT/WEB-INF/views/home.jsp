@@ -13,15 +13,8 @@
 <body>
 	<div id="main">
 		<div id="header">
-			<div id="logo">
-				<div id="logo_text">
-					<!-- class="logo_colour", allows you to change the colour of the text -->
-					<h1>
-						<a href="index.html">shadow<span class="logo_colour">play_2</span></a>
-					</h1>
-					<h2>Simple. Contemporary. Website Template.</h2>
-				</div>
-			</div>
+			<!-- logo part -->
+			<jsp:include page="_logo.jsp"></jsp:include>
 			
 			<!-- menu bar part -->
 			<jsp:include page="_menubar.jsp"></jsp:include>

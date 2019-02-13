@@ -105,7 +105,8 @@ public class ArticleBo {
 	}
 	
 	public void getArticlesByTopic(HttpServletRequest req) {
-		List<Article> articles = _articleDa.getArticlesLatest(10);
+		int id = Integer.parseInt(req.getParameter("id"));
+		List<Article> articles = _articleDa.findArticleByTopic(id);
 		req.setAttribute("articles", articles);
 	}
 	

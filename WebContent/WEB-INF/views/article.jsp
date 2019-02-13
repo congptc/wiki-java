@@ -33,7 +33,7 @@
 						<a class="button" href="${pageContext.request.contextPath}" >Back to home</a> 
 				</h1>
 				<h1 class="subject" >${article.subject }</h1>
-				<p class="info-article">Topic:  / ${article.createBy }-${article.createDate }</p>
+				<p class="info-article">Topic:${article.topicName}/ ${article.createBy }-${article.createDate }</p>
 				<p>
 			 		${article.content}					
 				</p>

@@ -127,7 +127,9 @@ public class ArticleDa {
 	}
 
 	public Article findArticleById(int articleId) {
-		String sql = "Select * From wk_articles where id= ?";
+		String sql = "Select t.name AS topic_name,a.* From wk_articles a "
+						+ "INNER JOIN wk_topics t ON  a.id_topic = t.id"
+						+ " WHERE a.id= ?";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {
@@ -141,13 +143,14 @@ public class ArticleDa {
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				int idTopic = rs.getInt("id_topic");
+				String topicName = rs.getString("topic_name");
 				String subject = rs.getString("subject");
 				String content = rs.getString("content");
 				String createBy = rs.getString("create_by");
 				Date createDate = rs.getTimestamp("create_date");
 				String updateBy = rs.getString("update_by");
 				Date updateDate = rs.getTimestamp("update_date");
-				Article article = new Article(id,idTopic, subject, content,createBy, createDate, updateBy, updateDate);
+				Article article = new Article(id,idTopic,topicName, subject, content,createBy, createDate, updateBy, updateDate);
 				return article;
 			}
 			return null;
@@ -166,8 +169,10 @@ public class ArticleDa {
 		}
 	}
 
-	public List<Article> queryArticleByTopic(int topicId) {
-		String sql = "Select * From wk_articles where id_topic = ?";
+	public List<Article> findArticleByTopic(int topicId) {
+		String sql = "SELECT t.name AS topic_name,a.* From wk_articles a "
+				+ " INNER JOIN wk_topics t ON a.id_topic = t.id"
+				+ " WHERE a.id_topic = ?";
 		List<Article> articles = new ArrayList<Article>();
 		Connection conn = null;
 		PreparedStatement pstm;
@@ -181,13 +186,14 @@ public class ArticleDa {
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				int idTopic = rs.getInt("id_topic");
+				String topicName = rs.getString("topic_name");
 				String subject = rs.getString("subject");
 				String content = rs.getString("content");
 				String createBy = rs.getString("create_by");
 				Date createDate = rs.getTimestamp("create_date");
 				String updateBy = rs.getString("update_by");
 				Date updateDate = rs.getTimestamp("update_date");
-				Article article = new Article(id,idTopic, subject, content,createBy, createDate, updateBy, updateDate);
+				Article article = new Article(id,idTopic,topicName, subject, content,createBy, createDate, updateBy, updateDate);
 				articles.add(article);
 			}
 			return articles;
@@ -207,7 +213,12 @@ public class ArticleDa {
 	}
 	
 	public List<Article> getArticlesLatest(int maxRow) {
-		String sql = "SELECT * FROM (Select * From wk_articles order by create_date DESC) WHERE  ROWNUM <= ?";
+		String sql = "SELECT * "
+				+ "FROM (Select t.name AS topic_name,a.*"
+							+ "From wk_articles a "
+							+ "INNER JOIN wk_topics t ON  a.id_topic = t.id "
+							+ "order by a.create_date DESC) "
+				+ " WHERE  ROWNUM <=?";
 		List<Article> articles = new ArrayList<Article>();
 		Connection conn = null;
 		PreparedStatement pstm;
@@ -221,13 +232,14 @@ public class ArticleDa {
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				int idTopic = rs.getInt("id_topic");
+				String topicName = rs.getString("topic_name");
 				String subject = rs.getString("subject");
 				String content = rs.getString("content");
 				String createBy = rs.getString("create_by");
 				Date createDate = rs.getTimestamp("create_date");
 				String updateBy = rs.getString("update_by");
 				Date updateDate = rs.getTimestamp("update_date");
-				Article article = new Article(id,idTopic, subject, content,createBy, createDate, updateBy, updateDate);
+				Article article = new Article(id,idTopic,topicName, subject, content,createBy, createDate, updateBy, updateDate);
 				articles.add(article);
 			}
 			return articles;

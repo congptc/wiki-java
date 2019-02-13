@@ -7,7 +7,7 @@
 	<h3>Topic</h3>
 	<ul>
 	<c:forEach var="topic" items="${topics}">
-		<li><a href="${pageContext.request.contextPath}/article?id=${topic.id}">${topic.name}</a></li>
+		<li><a href="${pageContext.request.contextPath}/articles?id=${topic.id}">${topic.name}</a></li>
 	</c:forEach>
 	</ul>
 	<h3>Search</h3>
