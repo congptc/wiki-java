@@ -9,6 +9,16 @@
 	</welcome-file-list>
 	
 	<filter>
+		<filter-name>EncodingFilter</filter-name>
+		<filter-class>com.tpb.wiki.filters.EncodingFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>EncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
 		<filter-name>LoadDataCommonFilter</filter-name>
 		<filter-class>com.tpb.wiki.filters.LoadDataCommonFilter</filter-class>
 	</filter>
