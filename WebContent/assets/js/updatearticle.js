@@ -5,13 +5,8 @@
 $(function() {
 	
 	$("#update").click(function(){
-		if ($("#subject").val() === "" || $("#content").val() === "") {
-			$("#messageFrame")
-					.html(
-							"<i style='color: red'>Fields (*) cannot be left blank</i>");
-		} else {
+		if (isValidDataInputArticle())
 			$("#formInput").submit();
-		}
 	});
 	
 });
