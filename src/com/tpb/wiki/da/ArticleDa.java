@@ -24,8 +24,8 @@ public class ArticleDa {
 	}
 
 	public Messages createArticle(Article article) {
-		String sql = "Insert into articles(id_topic, subject, content, create_by,create_date) "
-					+ "values (?,?,?,?,?)";
+		String sql = "Insert into wk_articles(id,id_topic, subject, content, create_by,create_date) "
+					+ "values (wk_article_sequence.nextval,?,?,?,?,?)";
 		Connection conn = null;
 		try {
 			conn = _ds.getConnection();
@@ -58,7 +58,7 @@ public class ArticleDa {
 	}
 
 	public Messages deleteArticle(String id) {
-		String sql = "Delete From articles where id= ?";
+		String sql = "Delete From wk_articles where id= ?";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {
@@ -86,7 +86,7 @@ public class ArticleDa {
 	}
 
 	public Messages updateArticle(Article article) {
-		String sql = "Update articles set "
+		String sql = "Update wk_articles set "
 					+ "id_topic=?,"
 					+ "subject =?,"
 					+ "content = ?,"
@@ -127,7 +127,7 @@ public class ArticleDa {
 	}
 
 	public Article findArticleById(int articleId) {
-		String sql = "Select * From articles where id= ?";
+		String sql = "Select * From wk_articles where id= ?";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {
@@ -167,7 +167,7 @@ public class ArticleDa {
 	}
 
 	public List<Article> queryArticleByTopic(int topicId) {
-		String sql = "Select * From articles where id_topic = ?";
+		String sql = "Select * From wk_articles where id_topic = ?";
 		List<Article> articles = new ArrayList<Article>();
 		Connection conn = null;
 		PreparedStatement pstm;
@@ -207,7 +207,7 @@ public class ArticleDa {
 	}
 	
 	public List<Article> getArticlesLatest(int maxRow) {
-		String sql = "Select * From articles order by create_date DESC LIMIT ?";
+		String sql = "SELECT * FROM (Select * From wk_articles order by create_date DESC) WHERE  ROWNUM <= ?";
 		List<Article> articles = new ArrayList<Article>();
 		Connection conn = null;
 		PreparedStatement pstm;
