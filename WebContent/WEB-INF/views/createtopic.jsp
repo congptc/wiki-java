@@ -61,6 +61,7 @@
 		
 		<!-- footer part -->
 		<jsp:include page="_footer.jsp"></jsp:include>
+		<script type="text/javascript" src="assets/js/common.js"></script>
 		<script type="text/javascript" src="assets/js/createtopic.js"></script> 
 		
 	</div>
