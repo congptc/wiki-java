@@ -71,7 +71,7 @@ public class UploadImgServlet extends HttpServlet {
 			}finally {
 	            // Build response data.
 	            responseData = new HashMap < Object, Object > ();
-	            responseData.put("link", req.getContextPath() + "/assets/article_img"+File.separator+fileName);
+	            responseData.put("link", req.getContextPath() + "/assets/article_img/"+fileName);
 	 
 	            // Send response data.
 	            String jsonResponseData = new Gson().toJson(responseData);
