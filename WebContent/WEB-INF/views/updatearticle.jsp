@@ -125,6 +125,7 @@
 			});
 		})
 	</script>
+	<script type="text/javascript" src="assets/js/common.js"></script>
 	<script type="text/javascript" src="assets/js/updatearticle.js"></script> 
 </body>
 </html>
