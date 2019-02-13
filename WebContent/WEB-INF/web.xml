@@ -18,6 +18,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
+	
 	<filter>
 		<filter-name>LoadDataCommonFilter</filter-name>
 		<filter-class>com.tpb.wiki.filters.LoadDataCommonFilter</filter-class>
@@ -28,44 +29,58 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	
 
 	<servlet>
-		<servlet-name>homeServlet</servlet-name>
+		<servlet-name>HomeServlet</servlet-name>
 		<servlet-class>com.tpb.wiki.servlet.HomeServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>homeServlet</servlet-name>
+		<servlet-name>HomeServlet</servlet-name>
 		<url-pattern>/home</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>articleServlet</servlet-name>
+		<servlet-name>ArticleServlet</servlet-name>
 		<servlet-class>com.tpb.wiki.servlet.ArticleServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>articleServlet</servlet-name>
+		<servlet-name>ArticleServlet</servlet-name>
 		<url-pattern>/article</url-pattern>
 	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ArticlesServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.ArticlesServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ArticlesServlet</servlet-name>
+		<url-pattern>/articles</url-pattern>
+	</servlet-mapping>
+	
+	
 
 	<servlet>
-		<servlet-name>createTopicServlet</servlet-name>
+		<servlet-name>CreateTopicServlet</servlet-name>
 		<servlet-class>com.tpb.wiki.servlet.CreateTopicServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>createTopicServlet</servlet-name>
+		<servlet-name>CreateTopicServlet</servlet-name>
 		<url-pattern>/create-topic</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>createArticleServlet</servlet-name>
+		<servlet-name>CreateArticleServlet</servlet-name>
 		<servlet-class>com.tpb.wiki.servlet.CreateArticleServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>createArticleServlet</servlet-name>
+		<servlet-name>CreateArticleServlet</servlet-name>
 		<url-pattern>/create-article</url-pattern>
 	</servlet-mapping>
 
