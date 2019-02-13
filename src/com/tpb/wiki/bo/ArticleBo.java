@@ -104,6 +104,11 @@ public class ArticleBo {
 		req.setAttribute("articles", articles);
 	}
 	
+	public void getArticlesByTopic(HttpServletRequest req) {
+		List<Article> articles = _articleDa.getArticlesLatest(10);
+		req.setAttribute("articles", articles);
+	}
+	
 	
 	public boolean isBlank(Article article) {
 		if(!StringUtils.isNotBlank(article.getSubject()) 
