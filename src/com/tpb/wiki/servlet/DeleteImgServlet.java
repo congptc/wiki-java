@@ -1,7 +1,7 @@
 package com.tpb.wiki.servlet;
 
-import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -9,7 +9,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -25,30 +25,26 @@ public class DeleteImgServlet extends HttpServlet {
 		super();
 	}
 
-
-
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//
+		HttpSession session = req.getSession();
+		@SuppressWarnings("unchecked")
+		List<String> pathImgsWillBeDelete = (List<String>) session.getAttribute("pathImgsWillBeDelete");
 		
-		  String src = req.getParameter("src");
-		  String fileName = src.substring(src.lastIndexOf("/"),src.length());
-		  ServletContext context = getServletContext();
-		  String fullPath = context.getRealPath("/assets/article_img/"+fileName);
-		  File deleteFile = new File(fullPath);
-	        try {
-	        	// check if the file  present or not
-	        	if( deleteFile.exists() )
-	        	deleteFile.delete() ;
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-	            return;
-	        }
-	        String jsonResponseData = new Gson().toJson("Success");
-	        resp.setContentType("application/json");
-	        resp.setCharacterEncoding("UTF-8");
-	        resp.getWriter().write(jsonResponseData);
+		String src = req.getParameter("src");
+		String fileName = src.substring(src.lastIndexOf("/"), src.length());
+		ServletContext context = getServletContext();
+		String fullPathImg = context.getRealPath("/assets/article_img/" + fileName);
+		if(pathImgsWillBeDelete != null) {
+			pathImgsWillBeDelete.add(fullPathImg);
+		}
+		String jsonResponseData = new Gson().toJson("Success");
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		resp.getWriter().write(jsonResponseData);
 	}
+	
+	
 
 }
