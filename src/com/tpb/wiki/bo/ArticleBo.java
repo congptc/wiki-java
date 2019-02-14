@@ -124,6 +124,12 @@ public class ArticleBo {
 		req.setAttribute("articles", articles);
 	}
 	
+	public void getArticlesBySubject(HttpServletRequest req) {
+		String valueSearch = (String)req.getParameter("search_field");
+		List<Article> articles = _articleDa.findArticleBySubject(valueSearch);
+		req.setAttribute("articles", articles);
+	}
+	
 	
 	public boolean isBlank(Article article) {
 		if(!StringUtils.isNotBlank(article.getSubject()) 

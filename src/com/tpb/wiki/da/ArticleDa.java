@@ -212,6 +212,48 @@ public class ArticleDa {
 		}
 	}
 	
+	public List<Article> findArticleBySubject(String valueSearch) {
+		String sql = "SELECT t.name AS topic_name,a.* From wk_articles a "
+				+ " INNER JOIN wk_topics t ON a.id_topic = t.id"
+				+ " WHERE upper(a.subject) like upper('%"+valueSearch+"%')";
+		List<Article> articles = new ArrayList<Article>();
+		Connection conn = null;
+		PreparedStatement pstm;
+		try {
+			conn = _ds.getConnection();
+			pstm = conn.prepareStatement(sql);
+
+			ResultSet rs = pstm.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				int idTopic = rs.getInt("id_topic");
+				String topicName = rs.getString("topic_name");
+				String subject = rs.getString("subject");
+				String content = rs.getString("content");
+				String createBy = rs.getString("create_by");
+				Date createDate = rs.getTimestamp("create_date");
+				String updateBy = rs.getString("update_by");
+				Date updateDate = rs.getTimestamp("update_date");
+				Article article = new Article(id,idTopic,topicName, subject, content,createBy, createDate, updateBy, updateDate);
+				articles.add(article);
+			}
+			return articles;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public List<Article> getArticlesLatest(int maxRow) {
 		String sql = "SELECT * "
 				+ "FROM (Select t.name AS topic_name,a.*"

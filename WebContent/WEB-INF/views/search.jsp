@@ -29,7 +29,7 @@
 
 			<div id="content">
 				<!-- insert the page content here -->
-				<h1>Latest Article</h1>
+				<h1>Result Search</h1>
 				<c:forEach var="article" items="${articles}">
 					<p>
 						<a href="${pageContext.request.contextPath}/article?id=${article.id}">

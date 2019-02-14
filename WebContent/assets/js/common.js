@@ -3,7 +3,6 @@
  */
 
 
-
 function setMessageError(content){
 	$("#messageFrame")
 	.html("<i style='color: red'>"+content+"</i>");
@@ -23,7 +22,7 @@ function isValidDataInputTopic(){
 		return false;
 	}
 	return true;
-};
+}
 
 function isValidDataInputArticle(){
 	if ($("#subject").val() === "" || $("#content").val() === "" ) {
@@ -34,5 +33,8 @@ function isValidDataInputArticle(){
 		return false;
 	}
 	return true;
-};
+}
+
+
+
 

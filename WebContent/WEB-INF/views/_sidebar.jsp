@@ -11,12 +11,12 @@
 	</c:forEach>
 	</ul>
 	<h3>Search</h3>
-	<form method="post" action="#" id="search_form">
+	<form method="GET" action="${pageContext.request.contextPath}/search" id="search_form">
 		<p>
-			<input class="search" type="text" name="search_field"
-				value="Enter keywords....."> <input name="search"
-				type="image" style="border: 0; margin: 0 0 -9px 5px;"
-				src="assets/css/search.png" alt="Search" title="Search">
+			<input class="search" type="text" name="search_field" id="search_field"
+				value="Enter keywords....."> 
+				<input name="search" id="search" type="button" value="Search" class="button" alt="Search" title="Search">
 		</p>
 	</form>
 </div>
+<script type="text/javascript" src="assets/js/search.js"></script>
