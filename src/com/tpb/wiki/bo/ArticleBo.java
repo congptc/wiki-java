@@ -14,11 +14,14 @@ import com.tpb.wiki.common.Constants;
 import com.tpb.wiki.common.Messages;
 import com.tpb.wiki.conn.DBCPDataSourceFactory;
 import com.tpb.wiki.da.ArticleDa;
+import com.tpb.wiki.utils.ProcessEditorHtmlUtil;
 
 public class ArticleBo {
 	
 	
 	private	ArticleDa _articleDa = null;
+	private ProcessEditorHtmlUtil pegu = new ProcessEditorHtmlUtil();
+	
 	public ArticleBo() {
 		DataSource ds = DBCPDataSourceFactory.getDataSource();
 		_articleDa =  new ArticleDa(ds);
@@ -54,6 +57,10 @@ public class ArticleBo {
 		
 		HttpSession session = req.getSession();
 		
+		//Get list path image will be delete
+		@SuppressWarnings("unchecked")
+		List<String> pathImgsWillBeDelete = (List<String>) session.getAttribute("pathImgsWillBeDelete");
+		
 		int id = Integer.parseInt(req.getParameter("id"));
 		int idTopic = Integer.parseInt(req.getParameter("idTopic"));
 		String subject = (String)req.getParameter("subject");
@@ -72,6 +79,10 @@ public class ArticleBo {
 			message =  _articleDa.updateArticle(article);	
 		}
 		
+		if(message.getMessageType() != Constants.MessageType.ERROR 
+				&& pathImgsWillBeDelete != null) {
+			pegu.deleteFile(pathImgsWillBeDelete);
+		}
 		session.setAttribute("afterUpdateArticle", article);
 		session.setAttribute("message", message);
 		
@@ -81,6 +92,9 @@ public class ArticleBo {
 		
 		HttpSession session = req.getSession();
 		Messages message = null;
+		
+		//Set NULL for session "pathImgsWillBeDelete" to clear data in session
+		session.setAttribute("pathImgsWillBeDelete", null);
 		
 		Article article=null;
 		if(session.getAttribute("afterUpdateArticle") == null) {
