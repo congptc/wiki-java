@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import org.apache.catalina.connector.Request;
+
 import com.tpb.wiki.beans.User;
 import com.tpb.wiki.common.Constants;
 import com.tpb.wiki.common.Messages;
@@ -41,5 +43,13 @@ public class UserBo {
 		req.setAttribute("message", message);
 		req.setAttribute("User", user);
 	}
+	
+	public void loadUserInfo(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		User user = (User)session.getAttribute(Constants.SESSION_USER_LOGIN);
+		req.setAttribute("userInfo", user);
+	}
+	
+	
 	
 }
