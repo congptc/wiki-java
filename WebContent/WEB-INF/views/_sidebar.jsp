@@ -3,7 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
 	
 <div class="sidebar">
-
+	
+	<i style="margin-right: 20px">Hello ${userInfo.userName}</i>
+	<a class="button" href="${pageContext.request.contextPath}/logout" >Logout</a>
+	
 	<h3>Topic</h3>
 	<ul>
 	<c:forEach var="topic" items="${topics}">
@@ -11,7 +14,7 @@
 	</c:forEach>
 	</ul>
 	<h3>Search</h3>
-	<form method="GET" action="${pageContext.request.contextPath}/search" id="search_form">
+	<form method="post" action="${pageContext.request.contextPath}/search" id="search_form">
 		<p>
 			<input class="search" type="text" name="search_field" id="search_field"
 				value="Enter keywords....."> 
