@@ -20,6 +20,16 @@
 		<div id="site_content">
 			<div id="content" style="padding-left: 200px">
 				<h1>Login</h1>
+				<div id="messageFrame">
+					<c:choose>
+						<c:when test="${message.messageType == 'SUCCESS'}">
+							<i style="color: green">${message.content}</i>
+						</c:when>
+						<c:when test="${message.messageType == 'ERROR'}">
+							<i style="color: red">${message.content}</i>
+						</c:when>
+					</c:choose>
+				</div>
 				<form action="${pageContext.request.contextPath}/login" method="post" id="formInput">
 				<div class="form_settings">
 					<p>
@@ -28,19 +38,20 @@
 					</p>
 					<p>
 						<span>Password</span>
-						<input type="text" id=""password"" name="password">
+						<input type="password" id="password" name="password">
 					</p>
 				</div>
+				</form>
 				<h1 class="bottom-line">
 					<a class="button" id="login" href="#" >Login</a>
 				</h1>
-				</form>
 			</div>
 		</div>
 
 		<!-- footer part -->
 		<jsp:include page="_footer.jsp"></jsp:include>
-
+		<script type="text/javascript" src="assets/js/common.js"></script>
+		<script type="text/javascript" src="assets/js/login.js"></script> 
 	</div>
 </body>
 </html>
