@@ -12,8 +12,12 @@ import javax.servlet.ServletRegistration;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import com.tpb.wiki.beans.User;
 import com.tpb.wiki.bo.TopicBo;
+import com.tpb.wiki.bo.UserBo;
+import com.tpb.wiki.common.Constants;
 
 public class LoadDataCommonFilter implements Filter{
 
@@ -34,6 +38,7 @@ public class LoadDataCommonFilter implements Filter{
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		TopicBo topicBo = new TopicBo();
+		UserBo userBo = new UserBo();
 		 // => /spath
         String servletPath = req.getServletPath();
         // => /abc/mnp
@@ -56,6 +61,7 @@ public class LoadDataCommonFilter implements Filter{
         for (ServletRegistration sr : values) {
             Collection<String> mappings = sr.getMappings();
             if (mappings.contains(urlPattern)) {
+            	userBo.loadUserInfo(req);
             	topicBo.loadTopic(req);
             }
         }
