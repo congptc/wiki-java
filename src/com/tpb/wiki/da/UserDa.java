@@ -134,6 +134,84 @@ public class UserDa {
 		}
 	}
 	
+	public User findUserByUserName(String pUserName) {
+		String sql = "Select * From wk_users where user_name= ?";
+		Connection conn = null;
+		PreparedStatement pstm;
+		try {
+			conn = _ds.getConnection();
+			pstm = conn.prepareStatement(sql);
+
+			pstm.setString(1, pUserName);
+
+			ResultSet rs = pstm.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String userName = rs.getString("user_name");
+				String password = rs.getString("password");
+				String status = rs.getString("status");
+				User user = new User(id, userName, password, status);
+				return user;
+			}
+			return null;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public User findUserByUserNameAndPassword(String pUserName,String pPassword) {
+		String sql = "Select * "
+						+ "From wk_users "
+						+ "where upper(user_name) = upper(?) "
+						+ "AND upper(password) = upper(?) "
+						+ "AMD status = 1";
+		
+		Connection conn = null;
+		PreparedStatement pstm;
+		try {
+			conn = _ds.getConnection();
+			pstm = conn.prepareStatement(sql);
+
+			pstm.setString(1, pUserName);
+			pstm.setString(2, pPassword);
+
+			ResultSet rs = pstm.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String userName = rs.getString("user_name");
+				String password = rs.getString("password");
+				String status = rs.getString("status");
+				User user = new User(id, userName, password, status);
+				return user;
+			}
+			return null;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public List<User> queryUser() {
 		String sql = "Select * From wk_users";
 		List<User> users = new ArrayList<User>();
