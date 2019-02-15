@@ -4,10 +4,9 @@
 
 <html>
 <head>
-<meta charset="UTF-8">
-<title>shadowplay_2</title>
 
-<link rel="stylesheet" href="assets/css/style.css">
+	<!-- header part -->
+	<jsp:include page="_header.jsp"></jsp:include>
 
 </head>
 <body>

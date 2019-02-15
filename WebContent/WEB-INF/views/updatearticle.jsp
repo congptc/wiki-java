@@ -3,8 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>shadowplay_2</title>
+
+<!-- header part -->
+<jsp:include page="_header.jsp"></jsp:include>
 
 <!-- Include external CSS. -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -15,10 +16,7 @@
 <link href="assets/froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
 
-<link rel="stylesheet" href="assets/css/style.css">
 
-<!-- Include external JS libs. -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
 <script type="text/javascript" src="assets/froala/js/froala_editor.pkgd.min.js"></script>

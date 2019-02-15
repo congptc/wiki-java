@@ -36,7 +36,7 @@ public class UserBo {
 		if(user == null) {
 			message = new Messages(Constants.MessageType.ERROR, "User name or password wrong");
 		}else {
-			session.setAttribute(Constants.SESSION_USER_LOGIN, user);
+			session.setAttribute(Constants.SESSION_USER_INFO, user);
 			message = new Messages(Constants.MessageType.SUCCESS, "Login success");
 		}
 		
@@ -46,7 +46,7 @@ public class UserBo {
 	
 	public void loadUserInfo(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute(Constants.SESSION_USER_LOGIN);
+		User user = (User)session.getAttribute(Constants.SESSION_USER_INFO);
 		req.setAttribute("userInfo", user);
 	}
 	

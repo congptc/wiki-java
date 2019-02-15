@@ -42,7 +42,7 @@ public class CheckLoginedFilter implements Filter {
 		HttpSession session = req.getSession();
 
 		if (req.getMethod().equalsIgnoreCase("GET") 
-			&& session.getAttribute(Constants.SESSION_USER_LOGIN) == null) {
+			&& session.getAttribute(Constants.SESSION_USER_INFO) == null) {
 			// => /spath
 			String servletPath = req.getServletPath();
 			// => /abc/mnp
