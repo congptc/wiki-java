@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import org.apache.commons.lang.StringUtils;
 
 import com.tpb.wiki.beans.Article;
+import com.tpb.wiki.beans.User;
 import com.tpb.wiki.common.Constants;
 import com.tpb.wiki.common.Messages;
 import com.tpb.wiki.conn.DBCPDataSourceFactory;
@@ -28,12 +29,13 @@ public class ArticleBo {
 	}
 	
 	public void createArticle(HttpServletRequest req) {
-		
+		HttpSession session = req.getSession();
+		User userInfo = (User)session.getAttribute(Constants.SESSION_USER_INFO);
 		int idTopic = Integer.parseInt(req.getParameter("idTopic"));
 		String subject = (String)req.getParameter("subject");
 		String content = (String)req.getParameter("content");
 		
-		String createBy = "System";
+		String createBy = userInfo.getUserName();
 		Date createDate = new Date();
 		Messages message;
 		
@@ -56,7 +58,7 @@ public class ArticleBo {
 	public void updateArticle(HttpServletRequest req) {
 		
 		HttpSession session = req.getSession();
-		
+		User userInfo = (User)session.getAttribute(Constants.SESSION_USER_INFO);
 		//Get list path image will be delete
 		@SuppressWarnings("unchecked")
 		List<String> pathImgsWillBeDelete = (List<String>) session.getAttribute("pathImgsWillBeDelete");
@@ -66,7 +68,7 @@ public class ArticleBo {
 		String subject = (String)req.getParameter("subject");
 		String content = (String)req.getParameter("content");
 		
-		String updateBy = "System";
+		String updateBy = userInfo.getUserName();
 		Date updateDate = new Date();
 		Messages message;
 		
@@ -127,6 +129,7 @@ public class ArticleBo {
 	public void getArticlesBySubject(HttpServletRequest req) {
 		String valueSearch = (String)req.getParameter("search_field");
 		List<Article> articles = _articleDa.findArticleBySubject(valueSearch);
+		req.setAttribute("searchValue", valueSearch);
 		req.setAttribute("articles", articles);
 	}
 	

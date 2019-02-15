@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<!-- header part -->
+	<!-- header part -->
 	<jsp:include page="_header.jsp"></jsp:include>
 
 </head>
@@ -33,7 +33,10 @@
 						<a href="${pageContext.request.contextPath}/topic?id=${topic.id}">
 							${topic.name}
 						</a>
-						<p class="info-article">${topic.createBy}-${topic.createDate}</p>
+						<p class="info-article">Created by: ${topic.createBy}-${topic.createDate}</p>
+						<c:if test="${topic.updateBy != null}">
+							<p class="info-article">Latest updated: ${topic.updateBy}-${topic.updateDate}</p>
+						</c:if>
 					</p>
 				</c:forEach>
 

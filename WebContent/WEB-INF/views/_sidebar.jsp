@@ -4,8 +4,6 @@
 	
 <div class="sidebar">
 	
-	<i style="margin-right: 20px">Hello ${userInfo.userName}</i>
-	<a class="button" href="${pageContext.request.contextPath}/logout" >Logout</a>
 	
 	<h3>Topic</h3>
 	<ul>
@@ -13,6 +11,7 @@
 		<li><a href="${pageContext.request.contextPath}/articles?id=${topic.id}">${topic.name}</a></li>
 	</c:forEach>
 	</ul>
+	
 	<h3>Search</h3>
 	<form method="post" action="${pageContext.request.contextPath}/search" id="search_form">
 		<p>
@@ -21,5 +20,6 @@
 				<input name="search" id="search" type="button" value="Search" class="button" alt="Search" title="Search">
 		</p>
 	</form>
+	
 </div>
 <script type="text/javascript" src="assets/js/search.js"></script>

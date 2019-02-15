@@ -12,7 +12,10 @@
 		<li class="btnMenu"><a href="#">Contact Us</a></li>
 	</ul>
 </div>
-
+<div style="text-align: right;margin-right: 5px">
+	<i style="margin-right: 10px;font-weight: bold;">Hello ${userInfo.userName}</i>
+	<a class="button" href="${pageContext.request.contextPath}/logout" >Logout</a>
+</div>
 <script>
 //Get the container element
 var btnContainer = document.getElementById("menubar");

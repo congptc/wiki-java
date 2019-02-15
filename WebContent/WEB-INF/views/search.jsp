@@ -26,14 +26,17 @@
 
 			<div id="content">
 				<!-- insert the page content here -->
-				<h1>Result Search</h1>
+				<h1>Result Search   <i>"${searchValue}"</i></h1>
 				<c:forEach var="article" items="${articles}">
 					<p>
 						<a href="${pageContext.request.contextPath}/article?id=${article.id}">
 							${article.subject}
 						</a>
 						<p class="info-article">Topic:${article.topicName}</p>
-						<p class="info-article">${article.createBy}-${article.createDate}</p>
+						<p class="info-article">Created by: ${article.createBy }-${article.createDate }</p>
+						<c:if test="${article.updateBy != null}">
+							<p class="info-article">Latest updated: ${article.updateBy}-${article.updateDate}</p>
+						</c:if>
 					</p>
 				</c:forEach>
 

@@ -31,7 +31,11 @@
 						<a class="button" href="${pageContext.request.contextPath}" >Back to home</a> 
 				</h1>
 				<h1 class="subject" >${article.subject }</h1>
-				<p class="info-article">Topic:${article.topicName}/ ${article.createBy }-${article.createDate }</p>
+				<p class="info-article">Topic: ${article.topicName}</p>
+				<p class="info-article">Created by: ${article.createBy }-${article.createDate }</p>
+				<c:if test="${article.updateBy != null}">
+					<p class="info-article">Latest updated: ${article.updateBy}-${article.updateDate}</p>
+				</c:if>
 				<p>
 			 		${article.content}					
 				</p>

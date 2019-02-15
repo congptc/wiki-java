@@ -6,8 +6,8 @@
 	<div id="logo_text">
 		<!-- class="logo_colour", allows you to change the colour of the text -->
 		<h1>
-			<a href="index.html">shadow<span class="logo_colour">play_2</span></a>
+			<a href="${pageContext.request.contextPath}/">WIKI   <span class="logo_colour">Core&MIS</span></a>
 		</h1>
-		<h2>Simple. Contemporary. Website Template.</h2>
+		<h2>The website knowledge share about CoreBanking and MORE</h2>
 	</div>
 </div>

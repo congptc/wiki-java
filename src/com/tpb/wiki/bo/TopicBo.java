@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import org.apache.commons.lang.StringUtils;
 
 import com.tpb.wiki.beans.Topic;
+import com.tpb.wiki.beans.User;
 import com.tpb.wiki.common.Constants;
 import com.tpb.wiki.common.Messages;
 import com.tpb.wiki.conn.DBCPDataSourceFactory;
@@ -31,10 +32,12 @@ public class TopicBo {
 	}
 
 	public void createTopic(HttpServletRequest req) {
-
+		HttpSession session = req.getSession();
+		User userInfo = (User)session.getAttribute(Constants.SESSION_USER_INFO);
+		
 		String name = (String) req.getParameter("name");
 		String desc = (String) req.getParameter("description");
-		String createBy = "System";
+		String createBy = userInfo.getUserName();
 		Date createDate = new Date();
 		Topic topic = new Topic(0, name, desc, createBy, createDate, null, null);
 		Messages message;
@@ -56,10 +59,11 @@ public class TopicBo {
 	public void updateTopic(HttpServletRequest req) {
 
 		HttpSession session = req.getSession();
+		User userInfo = (User)session.getAttribute(Constants.SESSION_USER_INFO);
 		
 		String name = (String) req.getParameter("name");
 		String desc = (String) req.getParameter("description");
-		String updateBy = "System";
+		String updateBy = userInfo.getUserName();
 		Date updateDate = new Date();
 		Topic topic = new Topic(0, name, desc, null, null, updateBy, updateDate);
 		Messages message;
