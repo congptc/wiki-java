@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.tpb.wiki.bo.UserBo;
+import com.tpb.wiki.common.Constants;
+import com.tpb.wiki.common.Messages;
+
 public class LoginServlet extends HttpServlet {
 
 	/**
@@ -30,6 +34,17 @@ public class LoginServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		UserBo userBo = new UserBo();
+		userBo.login(req);
+		Messages message = (Messages)req.getAttribute("message");
+		
+		if(message.getMessageType().equals(Constants.MessageType.ERROR)) {
+			RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/login.jsp");
+			dispatcher.forward(req, resp);
+		}else {
+			resp.sendRedirect(req.getContextPath()+"/");
+		}
+		
 	}
 	
 }
