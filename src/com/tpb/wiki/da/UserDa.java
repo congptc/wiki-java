@@ -175,7 +175,7 @@ public class UserDa {
 						+ "From wk_users "
 						+ "where upper(user_name) = upper(?) "
 						+ "AND upper(password) = upper(?) "
-						+ "AMD status = 1";
+						+ "AND status = 1";
 		
 		Connection conn = null;
 		PreparedStatement pstm;
