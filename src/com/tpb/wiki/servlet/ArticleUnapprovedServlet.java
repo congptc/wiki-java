@@ -10,16 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.tpb.wiki.beans.User;
-import com.tpb.wiki.bo.TopicBo;
+import com.tpb.wiki.bo.ArticleBo;
 import com.tpb.wiki.common.Constants;
 
-public class UpdateTopicServlet extends HttpServlet {
+public class ArticleUnapprovedServlet extends HttpServlet {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
@@ -30,25 +31,10 @@ public class UpdateTopicServlet extends HttpServlet {
 			return;
 		}
 		
-		TopicBo topicBo = new TopicBo();
-		topicBo.getTopicById(req);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/updatetopic.jsp");
+		ArticleBo articleBo = new ArticleBo();
+		articleBo.findArticleUnapprovedById(req);
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/views/articleunapproved.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		User user = (User)session.getAttribute(Constants.SESSION_USER_INFO);
-		
-		if(user == null || !user.getIssuperadmin().equalsIgnoreCase("y")) {
-			resp.sendRedirect(req.getContextPath()+"/");
-			return;
-		}
-		
-		int id = Integer.parseInt(req.getParameter("id"));
-		TopicBo topicBo = new TopicBo();
-		topicBo.updateTopic(req);
-		resp.sendRedirect(req.getContextPath()+"/update-topic?id="+id);
-	}
+
 }

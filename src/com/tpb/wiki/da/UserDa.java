@@ -20,7 +20,8 @@ public class UserDa {
 	}
 
 	public int createUser(User user) {
-		String sql = "Insert into wk_users(id,user_name, password,status) values (wk_user_sequence.nextval,?,?,?)";
+		String sql = "INSERT INTO wk_users(id,user_name, password,issuperadmin,status) "
+				+ " VALUES (wk_user_sequence.nextval,?,?,?,?)";
 		Connection conn = null;
 		try {
 			conn = _ds.getConnection();
@@ -28,7 +29,8 @@ public class UserDa {
 
 			pstm.setString(1, user.getUserName());
 			pstm.setString(2, user.getPassword());
-			pstm.setString(3, user.getStatus());
+			pstm.setString(3, user.getIssuperadmin());
+			pstm.setString(4, user.getStatus());
 
 			return pstm.executeUpdate();
 		} catch (Exception e) {
@@ -70,7 +72,7 @@ public class UserDa {
 	}
 
 	public int updateUser(User user) {
-		String sql = "Update wk_users set name =?,password = ?,status=? Where id=? ";
+		String sql = "Update wk_users set name =?,password = ?,issuperadmin = ?,status=? Where id=? ";
 		Connection conn = null;
 		PreparedStatement pstm;
 		try {
@@ -80,7 +82,8 @@ public class UserDa {
 			pstm.setInt(1, user.getId());
 			pstm.setString(2, user.getUserName());
 			pstm.setString(3, user.getPassword());
-			pstm.setString(4, user.getStatus());
+			pstm.setString(4, user.getIssuperadmin());
+			pstm.setString(5, user.getStatus());
 			return pstm.executeUpdate();
 
 		} catch (SQLException e) {
@@ -114,8 +117,9 @@ public class UserDa {
 				int id = rs.getInt("id");
 				String userName = rs.getString("user_name");
 				String password = rs.getString("password");
+				String issuperadmin = rs.getString("issuperadmin");
 				String status = rs.getString("status");
-				User user = new User(id, userName, password, status);
+				User user = new User(id, userName, password,issuperadmin, status);
 				return user;
 			}
 			return null;
@@ -150,8 +154,9 @@ public class UserDa {
 				int id = rs.getInt("id");
 				String userName = rs.getString("user_name");
 				String password = rs.getString("password");
+				String issuperadmin = rs.getString("issuperadmin");
 				String status = rs.getString("status");
-				User user = new User(id, userName, password, status);
+				User user = new User(id, userName, password,issuperadmin, status);
 				return user;
 			}
 			return null;
@@ -192,8 +197,9 @@ public class UserDa {
 				int id = rs.getInt("id");
 				String userName = rs.getString("user_name");
 				String password = rs.getString("password");
+				String issuperadmin = rs.getString("issuperadmin");
 				String status = rs.getString("status");
-				User user = new User(id, userName, password, status);
+				User user = new User(id, userName, password, issuperadmin, status);
 				return user;
 			}
 			return null;
@@ -227,8 +233,9 @@ public class UserDa {
 				int id = rs.getInt("id");
 				String userName = rs.getString("user_name");
 				String password = rs.getString("password");
+				String issuperadmin = rs.getString("issuperadmin");
 				String status = rs.getString("status");
-				User user = new User(id, userName, password, status);
+				User user = new User(id, userName, password,issuperadmin , status);
 				users.add(user);
 			}
 			return users;

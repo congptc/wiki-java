@@ -24,6 +24,7 @@ CREATE TABLE wk_users(
 	ID NUMBER(7) PRIMARY KEY,
   user_name VARCHAR2(20) NOT NULL,
   PASSWORD VARCHAR2(50) NOT NULL,
+  ISSUPERADMIN VARCHAR(1) NOT NULL,
   status NUMBER(2) NOT NULL
 );
 
@@ -40,15 +41,17 @@ CREATE TABLE wk_topics(
 
 CREATE TABLE wk_articles(
   ID NUMBER(10) PRIMARY KEY ,
-	id_topic NUMBER(7),
+	id_topic NUMBER(7) NOT NULL,
   subject NVARCHAR2(200) NOT NULL,
 	CONTENT LONG NOT NULL,
+  STATUS NUMBER(2) NOT NULL,
 	create_by  VARCHAR2(20),
   create_date DATE,
   update_by VARCHAR2(20),
 	update_date DATE,
   CONSTRAINT fk_id_topic FOREIGN KEY (id_topic) REFERENCES wk_topics(ID)
 );
+
 
 
 

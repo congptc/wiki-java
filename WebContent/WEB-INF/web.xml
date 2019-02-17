@@ -134,6 +134,17 @@
 	</servlet-mapping>
 	
 	
+	
+	<servlet>
+		<servlet-name>DeleteImgCreateModeServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.DeleteImgCreateModeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DeleteImgCreateModeServlet</servlet-name>
+		<url-pattern>/delete-image-create-mode</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>DeleteImgServlet</servlet-name>
 		<servlet-class>com.tpb.wiki.servlet.DeleteImgServlet</servlet-class>
@@ -183,5 +194,35 @@
 		<servlet-name>TopicServlet</servlet-name>
 		<url-pattern>/topic</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ArticlesUnapprovedServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.ArticlesUnapprovedServlet</servlet-class>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>ArticlesUnapprovedServlet</servlet-name>
+		<url-pattern>/articles-unapproved</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ArticleUnapprovedServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.ArticleUnapprovedServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ArticleUnapprovedServlet</servlet-name>
+		<url-pattern>/article-unapproved</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ApproveServlet</servlet-name>
+		<servlet-class>com.tpb.wiki.servlet.ApproveServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ApproveServlet</servlet-name>
+		<url-pattern>/approved</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

@@ -8,24 +8,29 @@ public class Article {
 	private String topicName;
 	private String subject;
 	private String content;
+	private int status;	
 	private String createBy;
 	private Date createDate;
 	private String updateBy;
 	private Date updateDate;
 	
-	public Article(int id, int idTopic, String subject, String content, String createBy, Date createDate,
-			String updateBy, Date updateDate) {
+	
+	
+	
+	public Article(int id, int idTopic, String subject, String content, int status, String createBy,
+			Date createDate, String updateBy, Date updateDate) {
 		super();
 		this.id = id;
 		this.idTopic = idTopic;
 		this.subject = subject;
 		this.content = content;
+		this.status = status;
 		this.createBy = createBy;
 		this.createDate = createDate;
 		this.updateBy = updateBy;
 		this.updateDate = updateDate;
 	}
-	
+
 	public Article(int id, int idTopic,String topicName, String subject, String content, String createBy, Date createDate,
 			String updateBy, Date updateDate) {
 		super();
@@ -39,6 +44,7 @@ public class Article {
 		this.updateBy = updateBy;
 		this.updateDate = updateDate;
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -69,6 +75,14 @@ public class Article {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public String getCreateBy() {
 		return createBy;
 	}

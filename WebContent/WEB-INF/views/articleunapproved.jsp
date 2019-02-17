@@ -18,18 +18,28 @@
 			 
 		</div>
 		<div id="content_header"></div>
-		<div id="site_content">
+		<div id="site_content_article">
 			
 			<!-- side bar part -->
 			<jsp:include page="_sidebar.jsp"></jsp:include>
-			
-			<div id="content">
+			<div id="content_article">
 				<!-- insert the page content here -->
 				<h1> 
-						<a class="button" href="${pageContext.request.contextPath}/create-article" >New</a> 
-						<a class="button" href="${pageContext.request.contextPath}/update-article?id=${article.id}" >Edit</a> 
-						<a class="button" href="${pageContext.request.contextPath}" >Back to home</a> 
+					<c:if test="${message.messageType != 'SUCCESS'}">
+						<a class="button" href="${pageContext.request.contextPath}/approved?id=${article.id}" >Approve</a>
+					</c:if>
+					<a class="button" href="${pageContext.request.contextPath}/articles-unapproved" >Back</a> 
 				</h1>
+				<div id="messageFrame">
+					<c:choose>
+						<c:when test="${message.messageType == 'SUCCESS'}">
+							<i style="color: green">${message.content}</i>
+						</c:when>
+						<c:when test="${message.messageType == 'ERROR'}">
+							<i style="color: red">${message.content}</i>
+						</c:when>
+					</c:choose>
+				</div>
 				<h1 class="subject" >${article.subject }</h1>
 				<p class="info-article">Topic: ${article.topicName}</p>
 				<p class="info-article">Created by: ${article.createBy }-${article.createDate }</p>
@@ -40,9 +50,10 @@
 			 		${article.content}					
 				</p>
 				<h1 class="bottom-line"> 
-						<a class="button" href="${pageContext.request.contextPath}/create-article" >New</a> 
-						<a class="button" href="${pageContext.request.contextPath}/update-article?id=${article.id}" >Edit</a> 
-						<a class="button" href="${pageContext.request.contextPath}" >Back to home</a>   
+					<c:if test="${message.messageType != 'SUCCESS'}">
+						<a class="button" href="${pageContext.request.contextPath}/approved?id=${article.id}" >Approve</a>
+					</c:if>
+					<a class="button" href="${pageContext.request.contextPath}/articles-unapproved" >Back</a> 
 				</h1>
 			</div>
 		</div>

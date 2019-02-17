@@ -19,6 +19,7 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+<script type="text/javascript" src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
 <script type="text/javascript" src="assets/froala/js/froala_editor.pkgd.min.js"></script>
 <script type="text/javascript" src="assets/froala/js/plugins/image.min.js"></script> 
 
@@ -80,7 +81,9 @@
 								<span>Content *</span>
 							</p>
 						</div>
+						<div class="reset-css" >
 						<textarea name="content" id="content">${article.content}</textarea>
+						</div>
 					</div>
 					<h1 class="bottom-line">
 						<a class="button" id="update" href="#" >Update</a>
@@ -99,8 +102,10 @@
 	<script type="text/javascript">
 	$(function() {
 			$('#content').froalaEditor({
+				toolbarButtons: ['fullscreen','undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable','insertImage', 'html'],
+			    toolbarButtonsXS: ['undo', 'redo' , '-', 'bold', 'italic', 'underline'],
 				imageUploadURL : '${pageContext.request.contextPath}/upload-image',
-				height : 300
+				height : 400
 			});
 	
 			$('#content').on('froalaEditor.image.removed', function(e, editor, $img) {

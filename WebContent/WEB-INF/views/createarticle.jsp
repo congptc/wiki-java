@@ -15,9 +15,10 @@
 <link href="assets/froala/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 <link href="assets/froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 
-
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+<!-- Include PDF export JS lib. -->
+<script type="text/javascript" src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
 <script type="text/javascript" src="assets/froala/js/froala_editor.pkgd.min.js"></script>
 <script type="text/javascript" src="assets/froala/js/plugins/image.min.js"></script> 
 
@@ -97,8 +98,10 @@
 	<script type="text/javascript">
 	$(function() {
 			$('#content').froalaEditor({
+				toolbarButtons: ['fullscreen','undo', 'redo' , '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'outdent', 'indent', 'clearFormatting', 'insertTable','insertImage', 'html'],
+			    toolbarButtonsXS: ['undo', 'redo' , '-', 'bold', 'italic', 'underline'],
 				imageUploadURL : '${pageContext.request.contextPath}/upload-image',
-				height : 300
+				height : 400
 			});
 	
 			$('#content').on('froalaEditor.image.removed', function(e, editor, $img) {
@@ -107,7 +110,7 @@
 					method : 'POST',
 	
 					// Request URL.
-					url : '${pageContext.request.contextPath}/delete-image',
+					url : '${pageContext.request.contextPath}/delete-image-create-mode',
 	
 					// Request params.
 					data : {

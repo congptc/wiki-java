@@ -6,7 +6,10 @@
 <div id="footer">
 	<p>
 		<a href="${pageContext.request.contextPath}/">Home</a> |
-		<a href="${pageContext.request.contextPath}/topics">Topics</a> |		
+		<a href="${pageContext.request.contextPath}/topics">Topics</a> |
+		<c:if test="${userInfo.issuperadmin == 'Y'}">
+			<a href="${pageContext.request.contextPath}/articles-unapproved">Approve Articles</a> |	
+		</c:if>		
 		<a href="${pageContext.request.contextPath}/create-topic">Create Topic</a> |
 		<a href="${pageContext.request.contextPath}/create-article">Create Article</a> |
 		<a href="#">Contact Us</a></li>

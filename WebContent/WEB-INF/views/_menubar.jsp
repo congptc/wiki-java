@@ -6,10 +6,14 @@
 	<ul id="menu">
 		<!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
 		<li class="btnMenu selected"><a href="${pageContext.request.contextPath}/">Home</a></li>
-		<li class="btnMenu"><a href="${pageContext.request.contextPath}/topics">Topics</a></li>
-		<li class="btnMenu"><a href="${pageContext.request.contextPath}/create-topic">Create Topic</a></li>
+		
+		<c:if test="${userInfo.issuperadmin == 'Y'}">
+			<li class="btnMenu"><a href="${pageContext.request.contextPath}/topics">Topics</a></li>
+			<li class="btnMenu"><a href="${pageContext.request.contextPath}/articles-unapproved">Approve Articles</a></li>
+			<li class="btnMenu"><a href="${pageContext.request.contextPath}/create-topic">Create Topic</a></li>	
+		</c:if>
+		
 		<li class="btnMenu"><a href="${pageContext.request.contextPath}/create-article">Create Article</a></li>
-		<li class="btnMenu"><a href="#">Contact Us</a></li>
 	</ul>
 </div>
 <div style="text-align: right;margin-right: 5px">

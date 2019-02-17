@@ -149,7 +149,7 @@ ol li
   padding-left: 4px;} 
 
 ul#menu
-{ float: right;
+{ float: left;
   margin: 0px;}
 
 ul#menu li
@@ -318,6 +318,7 @@ table tr td
   
  p.info-article{
     line-height:0px;
+    margin-top:2px;
  	font-style: italic;
  }
  
@@ -364,3 +365,4 @@ table tr td
   border-left: 1px solid #CCCCCC;
 } 
   
+

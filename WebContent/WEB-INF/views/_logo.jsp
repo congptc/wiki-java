@@ -8,6 +8,6 @@
 		<h1>
 			<a href="${pageContext.request.contextPath}/">WIKI   <span class="logo_colour">Core&MIS</span></a>
 		</h1>
-		<h2>The website knowledge share about CoreBanking and MORE</h2>
+		<h2>The website share knowledge about CoreBanking and MORE</h2>
 	</div>
 </div>
